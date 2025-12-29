@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olkahopdoworka Photography</title>
+    <meta name="description" content="Portfolio fotograficzne Olkahopdoworka">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📷</text></svg>">
+    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Story+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+        <div class="loading-logo">Olkahopdoworka</div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Logo Section -->
+<header class="header">
+    <div class="logo-container">
+        <h1 class="logo-main">Olkahopdoworka</h1>
+        <div class="logo-divider"></div>
+        <p class="logo-sub">PHOTOGRAPHY</p>
+    </div>
+    <div class="scroll-indicator">
+        <span class="scroll-text" data-lang-key="scroll">Scroll</span>
+        <div class="scroll-line"></div>
+    </div>
+</header>
+
+<!-- Gallery Stats -->
+<div class="gallery-stats">
+    <div class="stats-container">
+        <div class="stat-item">
+            <span class="stat-number" id="photoCount">0</span>
+            <span class="stat-label" id="photoLabel" data-lang-key="photographs">Photographs</span>
+        </div>
+    </div>
+</div>
+
+<!-- Gallery Section -->
+<main class="gallery-container">
+    <div class="gallery" id="gallery">
+        <!-- Zdjęcia ładowane przez JavaScript -->
+    </div>
+</main>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" aria-label="Powrót na górę">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+</button>
+
+<!-- About Me Section -->
+<section class="about-section" id="aboutSection">
+    <div class="about-content">
+        <h2 class="about-title" data-lang-key="aboutTitle">About Me</h2>
+        <div class="about-divider"></div>
+        <p class="about-text" data-lang-key="aboutText">
+            Welcome to my photography portfolio. I capture moments that tell stories, finding beauty in both the ordinary and extraordinary. My passion lies in creating timeless images that evoke emotion and preserve memories.
+        </p>
+
+        <!-- Contact Links Container -->
+        <div class="contact-links">
+            <!-- Instagram -->
+            <a href="https://instagram.com/olkahopdoworka" target="_blank" class="contact-link instagram-link" rel="noopener">
+                <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#FFDC80"/>
+                            <stop offset="10%" style="stop-color:#FCAF45"/>
+                            <stop offset="30%" style="stop-color:#F77737"/>
+                            <stop offset="50%" style="stop-color:#F56040"/>
+                            <stop offset="70%" style="stop-color:#FD1D1D"/>
+                            <stop offset="80%" style="stop-color:#E1306C"/>
+                            <stop offset="90%" style="stop-color:#C13584"/>
+                            <stop offset="100%" style="stop-color:#833AB4"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="url(#instagram-gradient)" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3.5" fill="none" stroke="url(#instagram-gradient)" stroke-width="2"/>
+                    <circle cx="17.5" cy="6.5" r="1.5" fill="url(#instagram-gradient)"/>
+                </svg>
+                <span class="contact-text">@olkahopdoworka</span>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:afasasf@wp.pl" class="contact-link email-link">
+                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <span class="contact-text">afasasf@wp.pl</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <p class="footer-logo">Olkahopdoworka</p>
+        <div class="footer-divider"></div>
+        <p class="copyright" data-lang-key="copyright">© 2024 Olkahopdoworka Photography. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <button class="close-lightbox" aria-label="Zamknij">&times;</button>
+    <button class="lightbox-arrow lightbox-prev" aria-label="Poprzednie">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+    </button>
+    <button class="lightbox-arrow lightbox-next" aria-label="Następne">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+    </button>
+    <img class="lightbox-image" id="lightboxImage" src="" alt="">
+    <div class="lightbox-counter" id="lightboxCounter">1 / 50</div>
+</div>
+
+<script src="script.js?v=2"></script>
+</body>
+</html>
