@@ -84,7 +84,7 @@ const TRANSLATIONS = {
     pl: {
         scroll: 'Przewiń',
         aboutTitle: 'O Mnie',
-        aboutText: 'Witaj w moim portfolio fotograficznym. Uwieczniam chwile, które opowiadają historie, znajdując piękno zarówno w tym co zwyczajne, jak i niezwykłe. Moją pasją jest tworzenie ponadczasowych obrazów, które wywołują emocje i zachowują wspomnienia.',
+        aboutText: 'Hej! Jestem Ola, mam 24 lata i od 7 lat zajmuję się fotografią, głównie eventową. Najbardziej lubię łapać prawdziwe momenty i emocje, które sprawiają, że zdjęcia mają swój klimat i historię. Chętnie podejmuję się nowych wyzwań i zapraszam do współpracy - razem stworzymy coś wyjątkowego!',
         copyright: '© 2024 Olkahopdoworka Photography. Wszelkie prawa zastrzeżone.',
         prevImage: 'Poprzednie',
         nextImage: 'Następne',
@@ -96,7 +96,7 @@ const TRANSLATIONS = {
     en: {
         scroll: 'Scroll',
         aboutTitle: 'About Me',
-        aboutText: 'Welcome to my photography portfolio. I capture moments that tell stories, finding beauty in both the ordinary and extraordinary. My passion lies in creating timeless images that evoke emotion and preserve memories.',
+        aboutText: "Hey! I'm Ola, I'm 24 years old and I've been doing photography for 7 years, mainly event photography. I love capturing real moments and emotions that give photos their unique atmosphere and story. I'm always open to new challenges and I invite you to collaborate - together we'll create something extraordinary!",
         copyright: '© 2024 Olkahopdoworka Photography. All rights reserved.',
         prevImage: 'Previous',
         nextImage: 'Next',
