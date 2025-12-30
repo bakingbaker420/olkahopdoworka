@@ -5,16 +5,15 @@ const CONFIG = {
 // ==================== LISTA ZDJĘĆ ====================
 
 const FEATURED_PHOTOS = [
-    "MG_2704.jpg",      // 1 (było _MG_2704.jpg)
-    "ARK_8694.jpg",     // 2
-    "MG_7313-2.jpg",    // 3 (było _MG_7313-2.jpg)
-    "ARK_4477.jpg",     // 4
-    "ARK_7707.jpg",     // 5
-    "MG_7426.jpg",      // 6 (było _MG_7426.jpg)
-    "ARK_9428.jpg"      // 7
+    "MG_2704.jpg",
+    "ARK_8694.jpg",
+    "MG_7313-2.jpg",
+    "ARK_4477.jpg",
+    "ARK_7707.jpg",
+    "MG_7426.jpg",
+    "ARK_9428.jpg"
 ];
 
-// Reszta zdjęć
 const OTHER_PHOTOS = [
     "ARK_0075.jpg",
     "ARK_0151.jpg",
@@ -48,10 +47,10 @@ const OTHER_PHOTOS = [
     "ARK_9805.jpg",
     "ARK_9807.jpg",
     "ARK_9898.jpg",
-    "MG_3646.jpg",      // było _MG_3646.jpg
-    "MG_5475.JPG",      // było _MG_5475.JPG
-    "MG_8169.jpg",      // było _MG_8169.jpg
-    "MG_8902-3.jpg",    // było _MG_8902-3.jpg
+    "MG_3646.jpg",
+    "MG_5475.JPG",
+    "MG_8169.jpg",
+    "MG_8902-3.jpg",
     "received_199295564626802.jpeg",
     "received_314890515835703.jpeg",
     "received_399376437321004.jpeg",
@@ -76,9 +75,6 @@ const PHOTO_LIST = [...FEATURED_PHOTOS, ...shuffleArray(OTHER_PHOTOS)];
 const TRANSLATIONS = {
     pl: {
         scroll: 'Przewiń',
-        photograph_singular: 'Zdjęcie',      // 1 zdjęcie
-        photograph_few: 'Zdjęcia',           // 2-4 zdjęcia
-        photograph_many: 'Zdjęć',            // 5-21, 25-31... zdjęć
         aboutTitle: 'O Mnie',
         aboutText: 'Witaj w moim portfolio fotograficznym. Uwieczniam chwile, które opowiadają historie, znajdując piękno zarówno w tym co zwyczajne, jak i niezwykłe. Moją pasją jest tworzenie ponadczasowych obrazów, które wywołują emocje i zachowują wspomnienia.',
         copyright: '© 2024 Olkahopdoworka Photography. Wszelkie prawa zastrzeżone.',
@@ -91,9 +87,6 @@ const TRANSLATIONS = {
     },
     en: {
         scroll: 'Scroll',
-        photograph_singular: 'Photograph',   // 1 photograph
-        photograph_few: 'Photographs',       // 2+ photographs
-        photograph_many: 'Photographs',      // same in English
         aboutTitle: 'About Me',
         aboutText: 'Welcome to my photography portfolio. I capture moments that tell stories, finding beauty in both the ordinary and extraordinary. My passion lies in creating timeless images that evoke emotion and preserve memories.',
         copyright: '© 2024 Olkahopdoworka Photography. All rights reserved.',
@@ -105,75 +98,10 @@ const TRANSLATIONS = {
         pageDescription: 'Photography portfolio by Olkahopdoworka'
     }
 };
-function getPhotographLabel(count) {
-    const translations = TRANSLATIONS[currentLanguage];
 
-    // Angielski - proste
-    if (currentLanguage === 'en') {
-        return count === 1 ? translations.photograph_singular : translations.photograph_many;
-    }
-
-    // Polski - odmiana przez przypadki
-    if (count === 1) {
-        return translations.photograph_singular; // 1 Zdjęcie
-    }
-
-    const lastDigit = count % 10;
-    const lastTwoDigits = count % 100;
-
-    // 11-14 zawsze "zdjęć"
-    if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-        return translations.photograph_many; // Zdjęć
-    }
-
-    // 2-4 (ale nie 12-14) = "zdjęcia"
-    if (lastDigit >= 2 && lastDigit <= 4) {
-        return translations.photograph_few; // Zdjęcia
-    }
-
-    // Reszta = "zdjęć"
-    return translations.photograph_many; // Zdjęć
-}
-
-// ==================== ŁADOWANIE GALERII ====================
-function loadGallery() {
-    const gallery = document.getElementById('gallery');
-    const photoCount = document.getElementById('photoCount');
-    const photoLabel = document.getElementById('photoLabel');
-
-    PHOTO_LIST.forEach((photoName, index) => {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        item.style.animationDelay = `${index * 0.03}s`;
-
-        const img = document.createElement('img');
-        img.src = `${CONFIG.photosPath}${photoName}`;
-        img.alt = 'Olkahopdoworka Photography';
-        img.loading = 'lazy';
-        img.dataset.index = index;
-
-        img.onload = function() {
-            loadedImagesCount++;
-            photoCount.textContent = loadedImagesCount;
-
-            // Aktualizuj odmianę słowa "zdjęć/zdjęcia/zdjęcie"
-            if (photoLabel) {
-                photoLabel.textContent = getPhotographLabel(loadedImagesCount);
-            }
-        };
-
-        img.onerror = function() {
-            this.parentElement.style.display = 'none';
-        };
-
-        item.appendChild(img);
-        gallery.appendChild(item);
-    });
-}
 // ==================== ZMIENNE GLOBALNE ====================
 let currentImageIndex = 0;
 let images = [];
-let loadedImagesCount = 0;
 let currentLanguage = 'en';
 let isMobile = window.innerWidth <= 768;
 
@@ -223,12 +151,6 @@ function applyTranslations() {
         }
     });
 
-    // Ustaw początkową etykietę dla zdjęć
-    const photoLabel = document.getElementById('photoLabel');
-    if (photoLabel) {
-        photoLabel.textContent = getPhotographLabel(loadedImagesCount || 0);
-    }
-
     const backToTopBtn = document.getElementById('backToTop');
     if (backToTopBtn) {
         backToTopBtn.setAttribute('aria-label', translations.backToTop);
@@ -262,7 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupScrollIndicator();
     setupParallax();
 
-    // Update on resize
     window.addEventListener('resize', debounce(() => {
         checkMobile();
     }, 250));
@@ -287,11 +208,10 @@ function initLoadingScreen() {
     const loadingProgress = document.getElementById('loadingProgress');
 
     let progress = 0;
-    const totalDuration = 1000; // Całkowity czas ładowania w ms (1.2 sekundy)
-    const intervalTime = 50; // Częstotliwość aktualizacji (ms)
+    const totalDuration = 1000;
+    const intervalTime = 50;
     const steps = totalDuration / intervalTime;
 
-    // Funkcja easing dla płynniejszego ruchu
     function easeOutQuart(t) {
         return 1 - Math.pow(1 - t, 4);
     }
@@ -300,18 +220,12 @@ function initLoadingScreen() {
 
     const interval = setInterval(() => {
         currentStep++;
-
-        // Oblicz progress z easing (szybko na początku, zwalnia na końcu)
         const linearProgress = currentStep / steps;
         progress = easeOutQuart(linearProgress) * 100;
-
-        // Aktualizuj pasek
         loadingProgress.style.width = Math.min(progress, 100) + '%';
 
         if (progress >= 100) {
             clearInterval(interval);
-
-            // Płynne ukrycie loading screen
             setTimeout(() => {
                 loadingScreen.classList.add('hidden');
                 document.body.style.overflow = 'auto';
@@ -323,7 +237,6 @@ function initLoadingScreen() {
 // ==================== ŁADOWANIE GALERII ====================
 function loadGallery() {
     const gallery = document.getElementById('gallery');
-    const photoCount = document.getElementById('photoCount');
 
     PHOTO_LIST.forEach((photoName, index) => {
         const item = document.createElement('div');
@@ -335,11 +248,6 @@ function loadGallery() {
         img.alt = 'Olkahopdoworka Photography';
         img.loading = 'lazy';
         img.dataset.index = index;
-
-        img.onload = function() {
-            loadedImagesCount++;
-            photoCount.textContent = loadedImagesCount;
-        };
 
         img.onerror = function() {
             this.parentElement.style.display = 'none';
@@ -395,7 +303,6 @@ function setupLightbox() {
         const diffX = touchStartX - touchEndX;
         const diffY = touchStartY - touchEndY;
 
-        // Only swipe if horizontal movement is greater than vertical
         if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
             diffX > 0 ? showNextImage() : showPrevImage();
         }
@@ -487,7 +394,6 @@ function setupScrollIndicator() {
 
 // ==================== PARALLAX EFFECT ====================
 function setupParallax() {
-    // Disable parallax on mobile for better performance
     if (isMobile) return;
 
     const header = document.querySelector('.header');
