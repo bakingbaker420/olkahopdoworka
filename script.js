@@ -26,17 +26,26 @@ const OTHER_PHOTOS = [
     "ARK_1047.jpg",
     "ARK_1208.jpg",
     "ARK_1421.jpg",
+    "ARK_2115.jpg",     // ← NOWE
+    "ARK_2827.jpg",     // ← NOWE
+    "ARK_2888.jpg",     // ← NOWE
+    "ARK_3054.jpg",     // ← NOWE
     "ARK_3168.jpg",
     "ARK_3376.jpg",
     "ARK_3915.jpg",
     "ARK_4453.jpg",
     "ARK_5036.jpg",
     "ARK_5385.jpg",
+    "ARK_5557.jpg",     // ← NOWE
     "ARK_5780.jpg",
+    "ARK_5902.jpg",     // ← NOWE
     "ARK_6096.jpg",
     "ARK_7513.jpg",
+    "ARK_7823.jpg",     // ← NOWE
+    "ARK_7980.jpg",     // ← NOWE
     "ARK_8130.jpg",
     "ARK_8191.jpg",
+    "ARK_8297.jpg",     // ← NOWE
     "ARK_8578.jpg",
     "ARK_8896.jpg",
     "ARK_8958.jpg",
@@ -57,7 +66,6 @@ const OTHER_PHOTOS = [
     "received_550384375812018.jpeg",
     "received_710304273122863.jpeg"
 ];
-
 // Funkcja do losowego mieszania tablicy (Fisher-Yates shuffle)
 function shuffleArray(array) {
     const shuffled = [...array];
